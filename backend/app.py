@@ -6,8 +6,12 @@ from analyze import analyze_csv
 
 app = Flask(__name__)
 CORS(app)
-UPLOAD_FOLDER = '../uploads'
+UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+@app.route('/')
+def index():
+    return '✅ Backend is running. Use POST /upload to upload a CSV.'
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
